@@ -8,6 +8,10 @@
     <title>Document</title>
 </head>
 <body>
+<h2>History</h2>
+{% for h in history_game  %}
+    <p>Step : {{ h.id }}, bulls: {{ h.bulls }} , cows: {{ h.cows }} </p>
+{% endfor %}
 
 </body>
 </html>

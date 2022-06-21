@@ -7,7 +7,7 @@ def history(request):
 history_game = []
 moves = 0
 
-secret_num = ['4', '5', '6', '7']
+secret_num = [4,5,6,7]
 
 def bulls_cow(request):
     if request.method == "GET":
@@ -19,11 +19,10 @@ def bulls_cow(request):
             try:
                 numbers = list(map(int, num.split()))
                 bulls, cows = guess_numbers(secret_num, numbers)
-                contex['message'] = res
-                if bulls == len(secrets):
-                    res = 'You got it'
+                if bulls == len(secret_num):
+                    contex['message'] = 'You got it! You WIN!'
                 else:
-                    res = 'You got {bulls} bulls and {cows} cows'
+                    contex['message'] = f'You got {bulls} bulls and {cows} cows.'
                 global moves
                 moves += 1
                 history_game.append({'id': moves, 'bulls': bulls, 'cows': cows})
@@ -39,7 +38,6 @@ def guess_numbers(secret, numbers):
     bulls = 0
     cows = 0
     resp = 'Wrong numbers'
-    rest = f'It must be {len(secret)} numbers'
     if len(numbers) != len(secret):
         return resp
     for i in range(len(secret)):
