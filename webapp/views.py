@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 # Create your views here.
 def history(request):
-    return render(request, 'history.html')
+    return render(request, 'history.html', {'history_game': history_game})
 
 history_game = []
 moves = 0
